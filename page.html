@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gráfico de barras Chile</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #cceeff; /* fondo celeste */
+            font-family: Arial, sans-serif;
+            color: #274156;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        p {
+            text-align: center;
+            max-width: 900px;
+            margin: 5px auto 20px;
+        }
+
+        /* Contenedor para el canvas */
+        .chart-container {
+            width: 90%;
+            max-width: 900px;
+            height: 500px; /* altura fija para que se vea el gráfico */
+            margin: 0 auto 50px;
+            background-color: #cceeff; /* fondo celeste */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gráfico de barras</h1>
+    <p>En este gráfico de barras encontrarás la cantidad de habitantes por región de Chile. <a href="https://es.wikipedia.org/wiki/Anexo:Regiones_de_Chile_por_poblaci%C3%B3n" target="_blank">Más info</a> | <a href='index.html'>Volver</a></p>
+
+    <div class="chart-container">
+        <canvas id="grafico"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        new Chart("grafico", {
+            type: 'bar',
+            data: {
+                labels: ['Metropolitana', 'Valparaíso', 'Biobío', 'Maule', 'La Araucanía', 'Atacama'],
+                datasets: [{
+                    label: '# de habitantes por región',
+                    data: [7400741, 1896053, 1613059, 1123008, 938626, 263924],
+                    backgroundColor: [
+                        'rgba(0, 102, 204, 0.5)',
+                        'rgba(0, 153, 255, 0.5)',
+                        'rgba(51, 153, 255, 0.5)',
+                        'rgba(102, 178, 255, 0.5)',
+                        'rgba(153, 204, 255, 0.5)',
+                        'rgba(204, 229, 255, 0.5)'
+                    ],
+                    borderColor: [
+                        'rgb(0, 102, 204)',
+                        'rgb(0, 153, 255)',
+                        'rgb(51, 153, 255)',
+                        'rgb(102, 178, 255)',
+                        'rgb(153, 204, 255)',
+                        'rgb(204, 229, 255)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: { color: '#004080', font: { size: 14 } }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            color: 'rgba(0, 102, 204,0.2)',
+                            borderColor: 'rgba(0, 102, 204,1)',
+                            lineWidth: 1.5
+                        },
+                        ticks: { color: '#004080', font: { size: 12 } }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 102, 204,0.2)',
+                            borderColor: 'rgba(0, 102, 204,1)',
+                            lineWidth: 1.5
+                        },
+                        ticks: { color: '#004080', font: { size: 12 } }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
